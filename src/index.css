@@ -12,9 +12,24 @@
   --color-orange-dim: #d43e12;
 }
 
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --color-ink: #ece8df;
+  --color-concrete: #16140f;
+  --color-concrete-dim: #211d16;
+  --color-steel: #a39e8f;
+  --color-orange: #ff5a2a;
+  --color-orange-dim: #ff7a4d;
+}
+
 @layer base {
   * {
     border-color: var(--color-ink);
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   }
 
   html {
@@ -27,6 +42,7 @@
     color: var(--color-ink);
     font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   ::selection {

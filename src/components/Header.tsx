@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
+import { ThemeToggle } from "@/components/ThemeToggle"
 
 const NAV = [
   { label: "Catálogo", href: "#catalogo" },
@@ -33,15 +34,19 @@ export function Header() {
           >
             Ver Ofertas
           </a>
+          <ThemeToggle />
         </nav>
 
-        <button
-          className="p-2 md:hidden"
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button
+            className="p-2"
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
       </div>
 
       {open && (
