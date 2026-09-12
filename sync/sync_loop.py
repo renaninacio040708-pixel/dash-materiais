@@ -9,9 +9,12 @@ fecha essa área de trabalho virtual e volta para a que você estava
 usando. Repete a cada SYNC_INTERVAL_HOURS.
 
 Como rodar:
-    1. Preencha SUPABASE_URL e SUPABASE_SERVICE_KEY abaixo (pegue em
-       Project Settings > API no painel do Supabase). A service_role
-       key fica só aqui no seu PC — nunca vai pro site nem pro GitHub.
+    1. Crie um arquivo sync/.env (não sobe pro git) com:
+         SUPABASE_URL=https://SEU-PROJETO.supabase.co
+         SUPABASE_SERVICE_KEY=sua-service-role-key
+       (pegue as duas em Project Settings > API > Legacy anon,
+       service_role API keys — a service_role fica só aqui no seu PC,
+       nunca vai pro site nem pro GitHub).
     2. python -m pip install pyautogui pyscreeze==0.1.28 pygetwindow requests
     3. python sync_loop.py
     4. Deixa essa janela do terminal rodando em segundo plano. Ela vai
@@ -39,8 +42,24 @@ from datetime import datetime, timezone
 import pyautogui
 import requests
 
+
+def _load_dotenv(path):
+    """Minimal .env loader (no extra dependency) — only sets vars not already in the environment."""
+    if not os.path.exists(path):
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            os.environ.setdefault(key.strip(), value.strip())
+
+
+_load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
+
 # ---------------------------------------------------------------------------
-# Configuração — preencha antes de rodar (ou defina como variável de ambiente)
+# Configuração — preencha sync/.env (ou defina como variável de ambiente)
 # ---------------------------------------------------------------------------
 SUPABASE_URL = os.environ.get("SUPABASE_URL", "")
 SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_KEY", "")
