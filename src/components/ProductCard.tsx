@@ -33,30 +33,30 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           }}
         />
         {status.discountPct && (
-          <span className="absolute left-0 top-0 border-b-2 border-r-2 border-ink bg-orange px-2 py-1 font-mono text-xs font-bold text-concrete">
+          <span className="absolute left-0 top-0 border-b-2 border-r-2 border-ink bg-orange px-1.5 py-0.5 font-mono text-[10px] font-bold text-concrete sm:px-2 sm:py-1 sm:text-xs">
             -{status.discountPct}%
           </span>
         )}
       </div>
 
-      <div className="flex flex-1 flex-col justify-between p-5">
+      <div className="flex flex-1 flex-col justify-between p-3 sm:p-5">
         <div>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-steel group-hover:text-orange">
+          <span className="font-mono text-[9px] uppercase tracking-widest text-steel group-hover:text-orange sm:text-[10px]">
             {product.category}
           </span>
-          <h3 className="font-display mt-2 text-base font-bold leading-snug group-hover:text-concrete">
+          <h3 className="font-display mt-1.5 line-clamp-2 text-sm font-bold leading-snug group-hover:text-concrete sm:mt-2 sm:text-base">
             {product.name}
           </h3>
-          <p className="mt-2 text-sm leading-snug text-steel group-hover:text-concrete/70">
+          <p className="mt-2 hidden text-sm leading-snug text-steel group-hover:text-concrete/70 sm:block">
             {product.description}
           </p>
           {status.price !== null && (
-            <div className="mt-3 flex items-baseline gap-2">
-              <span className="font-display text-lg font-black group-hover:text-concrete">
+            <div className="mt-2 flex flex-wrap items-baseline gap-1.5 sm:mt-3 sm:gap-2">
+              <span className="font-display text-base font-black group-hover:text-concrete sm:text-lg">
                 {currency(status.price)}
               </span>
               {status.originalPrice && status.originalPrice > status.price && (
-                <span className="font-mono text-xs text-steel line-through group-hover:text-concrete/50">
+                <span className="font-mono text-[11px] text-steel line-through group-hover:text-concrete/50 sm:text-xs">
                   {currency(status.originalPrice)}
                 </span>
               )}
@@ -64,12 +64,12 @@ export function ProductCard({ product, index }: { product: Product; index: numbe
           )}
         </div>
 
-        <div className="mt-5 flex items-center justify-between border-t-2 border-ink/10 pt-4 group-hover:border-concrete/20">
-          <span className="font-mono text-xs font-semibold uppercase tracking-widest text-ink group-hover:text-concrete">
+        <div className="mt-3 flex items-center justify-between border-t-2 border-ink/10 pt-3 group-hover:border-concrete/20 sm:mt-5 sm:pt-4">
+          <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-ink group-hover:text-concrete sm:text-xs">
             Ver produto
           </span>
           <ArrowUpRight
-            size={20}
+            size={18}
             className="shrink-0 text-ink transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-orange"
           />
         </div>
