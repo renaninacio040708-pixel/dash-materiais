@@ -1,0 +1,6 @@
+[
+  {"id": "58217052625", "price": 9.50, "original_price": 19.00, "discount_pct": 50, "stock": null, "in_stock": true},
+  {"id": "58266742369", "price": 49.99, "original_price": 72.00, "discount_pct": 30, "stock": 1986, "in_stock": true},
+  {"id": "58216757078", "price": 149.00, "original_price": 210.00, "discount_pct": 29, "stock": 50, "in_stock": true},
+  {"id": "58216752377", "price": 23.99, "original_price": 34.91, "discount_pct": 31, "stock": 997, "in_stock": true}
+]
